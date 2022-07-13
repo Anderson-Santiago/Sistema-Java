@@ -12,11 +12,24 @@ public class UserService {
     @Autowired
     UserRepository repository;
 
-    public User saveProduct(User user) {
+    public List<User> findUsers(){
+        return repository.findAll();
+    }
+
+    public User saveUser(User user) {
         return repository.save(user);
     }
 
-    public List<User> findUsers(){
-        return repository.findAll();
+    public User updateUser(User user){
+        User handlerUser = repository.findById(user.getIdcadusuario()).orElse(null);
+        assert handlerUser != null;
+        handlerUser.setDcr_login(user.getDcr_login());
+        handlerUser.setDcr_senha(user.getDcr_senha());
+        handlerUser.setDcr_usuario(user.getDcr_usuario());
+        return repository.save(handlerUser);
+    }
+    public String deleteUser(Long id) {
+        repository.deleteById(id);
+        return "User removed: " + id;
     }
 }
