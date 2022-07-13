@@ -5,6 +5,8 @@ import com.example.sistemaJava.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -12,5 +14,9 @@ public class UserService {
 
     public User saveProduct(User user) {
         return repository.save(user);
+    }
+
+    public List<User> findUsers(){
+        return repository.findAll();
     }
 }
