@@ -1,6 +1,7 @@
 package com.example.sistemaJava.controller;
 
 import com.example.sistemaJava.dto.MessageExceptionHandler;
+import com.example.sistemaJava.exceptions.FindByIdExeception;
 import com.example.sistemaJava.exceptions.LoginAlreadyExistsException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaracterSpecialException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaractersException;
@@ -45,6 +46,13 @@ public class ValidationController {
     @ResponseBody
     public ResponseEntity<MessageExceptionHandler> exceptionPasswordNumber() {
         messageExceptionHandler.setMessage("A senha deve conter pelo menos um número");
+        return new ResponseEntity<>(messageExceptionHandler, HttpStatus.BAD_REQUEST);
+
+    }
+    @ExceptionHandler(FindByIdExeception.class)
+    @ResponseBody
+    public ResponseEntity<MessageExceptionHandler> exceptionFindById() {
+        messageExceptionHandler.setMessage("Usuário não encontrado!");
         return new ResponseEntity<>(messageExceptionHandler, HttpStatus.BAD_REQUEST);
 
     }

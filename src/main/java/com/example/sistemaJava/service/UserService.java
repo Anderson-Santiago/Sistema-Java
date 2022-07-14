@@ -1,6 +1,7 @@
 package com.example.sistemaJava.service;
 
 import com.example.sistemaJava.dto.User;
+import com.example.sistemaJava.exceptions.FindByIdExeception;
 import com.example.sistemaJava.exceptions.LoginAlreadyExistsException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaracterSpecialException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaractersException;
@@ -9,9 +10,9 @@ import com.example.sistemaJava.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,8 +23,9 @@ public class UserService {
         return repository.findAll();
     }
 
-    public List<User> findUser(Long id) {
-        return repository.findAllById(Collections.singleton(id));
+    public User findUser(Long id) {
+        Optional<User> user = repository.findById(id);
+        return user.orElseThrow(new FindByIdExeception())
     }
 
     public void validationLogin(User user) throws Exception {
