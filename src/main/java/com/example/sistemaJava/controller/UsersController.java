@@ -28,22 +28,23 @@ public class UsersController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<List<User>> findByIdUser(@PathVariable Long id){
+    public ResponseEntity<List<User>> findByIdUser(@PathVariable Long id) {
         return ResponseEntity.ok(service.findUser(id));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> sendCreateUser(@RequestBody User user) throws Exception {
-        return service.saveUser(user);
+    public ResponseEntity<User> sendCreateUser(@RequestBody User user) throws Exception {
+        return ResponseEntity.ok(service.saveUser(user));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> sendUpdateUser(@RequestBody User user) throws Exception {
-        return service.updateUser(user);
+    public ResponseEntity<User> sendUpdateUser(@RequestBody User user) throws Exception {
+        return ResponseEntity.ok(service.updateUser(user));
     }
+
     @DeleteMapping("/delete/{id}")
-    public String sendUpdateUser(@PathVariable Long id){
-        return service.deleteUser(id);
+    public ResponseEntity<String> sendUpdateUser(@PathVariable Long id) {
+        return ResponseEntity.ok(service.deleteUser(id));
     }
 
 }
