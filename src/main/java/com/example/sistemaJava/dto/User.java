@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,9 +20,10 @@ public class User implements Serializable {
     @Id
     @GeneratedValue
     private Long idcadusuario;
-    private  String dcr_usuario;
-    private  String dcr_login;
-    private  String dcr_senha;
+    private String dcrUsuario;
+    @Column(unique = true)
+    private String dcrLogin;
+    private String dcrSenha;
 }
 
 

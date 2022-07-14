@@ -3,6 +3,7 @@ package com.example.sistemaJava.controller;
 import com.example.sistemaJava.dto.User;
 import com.example.sistemaJava.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,18 +28,17 @@ public class UsersController {
     }
 
     @PostMapping("/create")
-    public User sendCreateUser(@RequestBody User user) {
+    public ResponseEntity<?> sendCreateUser(@RequestBody User user) throws Exception {
         return service.saveUser(user);
     }
 
     @PutMapping("/update")
-    public User sendUpdateUser(@RequestBody User user){
+    public ResponseEntity<?> sendUpdateUser(@RequestBody User user) throws Exception {
         return service.updateUser(user);
     }
     @DeleteMapping("/delete/{id}")
     public String sendUpdateUser(@PathVariable Long id){
         return service.deleteUser(id);
     }
-
 
 }
