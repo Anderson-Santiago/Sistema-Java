@@ -27,6 +27,11 @@ public class UsersController {
         return service.findUsers();
     }
 
+    @GetMapping("/find/{id}")
+    public ResponseEntity<List<User>> findByIdUser(@PathVariable Long id){
+        return ResponseEntity.ok(service.findUser(id));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> sendCreateUser(@RequestBody User user) throws Exception {
         return service.saveUser(user);
