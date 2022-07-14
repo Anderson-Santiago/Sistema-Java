@@ -1,6 +1,6 @@
 package com.example.sistemaJava.controller;
 
-import com.example.sistemaJava.mock.User;
+import com.example.sistemaJava.dto.User;
 import com.example.sistemaJava.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,9 +30,9 @@ public class UsersController {
 
     @GetMapping("{id}")
     public ResponseEntity<User> findByIdUser(@PathVariable Long id) {
-        User teste = service.findUser(id);
-        if (teste != null) {
-            return ResponseEntity.ok(teste);
+        User user = service.findUser(id);
+        if (user != null) {
+            return ResponseEntity.ok(user);
         }
         return ResponseEntity.notFound().build();
     }
@@ -49,7 +49,12 @@ public class UsersController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> sendUpdateUser(@PathVariable Long id) {
-        return ResponseEntity.ok(service.deleteUser(id));
+        User user = service.findUser(id);
+        if (user != null) {
+            return ResponseEntity.ok(service.deleteUser(id));
+        }
+        return ResponseEntity.notFound().build();
+
     }
 
 }

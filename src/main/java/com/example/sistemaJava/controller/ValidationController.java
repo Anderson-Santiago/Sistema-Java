@@ -1,10 +1,10 @@
 package com.example.sistemaJava.controller;
 
+import com.example.sistemaJava.dto.MessageExceptionHandler;
 import com.example.sistemaJava.exceptions.LoginAlreadyExistsException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaracterSpecialException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaractersException;
 import com.example.sistemaJava.exceptions.PasswordVerifyNumberException;
-import com.example.sistemaJava.mock.MessageExceptionHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,7 +32,7 @@ public class ValidationController {
 
     @ExceptionHandler(PasswordVerifyCaracterSpecialException.class)
     public ResponseEntity<MessageExceptionHandler> exceptionPasswordCaractersSpecial() {
-        messageExceptionHandler.setMessage("A senha deve conter pelo menos 1 Simbolo");
+        messageExceptionHandler.setMessage("A senha deve conter pelo menos um caracter especial");
         return new ResponseEntity<>(messageExceptionHandler, HttpStatus.BAD_REQUEST);
 
     }

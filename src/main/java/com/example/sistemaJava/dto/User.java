@@ -1,6 +1,7 @@
-package com.example.sistemaJava.mock;
+package com.example.sistemaJava.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder(toBuilder = true)
 @Table(name = "cadusuarios")
 public class User implements Serializable {
     @Id
@@ -25,5 +27,3 @@ public class User implements Serializable {
     private String dcrLogin;
     private String dcrSenha;
 }
-
-

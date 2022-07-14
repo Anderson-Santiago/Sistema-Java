@@ -1,10 +1,10 @@
 package com.example.sistemaJava.service;
 
+import com.example.sistemaJava.dto.User;
 import com.example.sistemaJava.exceptions.LoginAlreadyExistsException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaracterSpecialException;
 import com.example.sistemaJava.exceptions.PasswordVerifyCaractersException;
 import com.example.sistemaJava.exceptions.PasswordVerifyNumberException;
-import com.example.sistemaJava.mock.User;
 import com.example.sistemaJava.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

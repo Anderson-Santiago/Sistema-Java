@@ -1,4 +1,4 @@
-package com.example.sistemaJava.mock;
+package com.example.sistemaJava.dto;
 
 import lombok.Data;
 
